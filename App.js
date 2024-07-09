@@ -9,7 +9,7 @@ const app = express();
 const path = require('path');
 const fs = require('fs');
 
-const port = 8089;
+
 const host = '192.168.5.40';
 const uri = 'mongodb+srv://codeing722:MjPvde7fbaZt4oSS@sahaayata.lthnczn.mongodb.net/?retryWrites=true&w=majority&appName=sahaayata';
 const dbName = 'Sahaayata';
@@ -848,7 +848,7 @@ app.put('/user/:id', upload.single('profilePicture'), async (req, res) => {
 });
 
 
-
-app.listen( () => {
-  console.log('Server is running on ');
+const port = 8000;
+app.listen( port, () => {
+  console.log(`Server is running on ${port} `);
 });
