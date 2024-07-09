@@ -1,5 +1,5 @@
 const express = require('express');
-const { MongoClient, ObjectId } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId  } = require('mongodb');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
@@ -10,9 +10,9 @@ const path = require('path');
 const fs = require('fs');
 
 const port = 8089;
-const host = '192.168.5.56';
-const mongoURI = 'mongodb://localhost:27017';
-const dbName = 'your_database_name';
+const host = '192.168.5.40';
+const uri = 'mongodb+srv://codeing722:MjPvde7fbaZt4oSS@sahaayata.lthnczn.mongodb.net/?retryWrites=true&w=majority&appName=sahaayata';
+const dbName = 'Sahaayata';
 const userCollectionName = 'users';
 const profilePicturesCollectionName = 'ProfilePictures';
 const workshopCollectionName = 'workshop';
@@ -38,7 +38,15 @@ app.use(express.json());
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use(express.urlencoded({ extended: true }));
 
-const client = new MongoClient(mongoURI);
+
+
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
 
 async function connectDB() {
     try {
@@ -835,6 +843,6 @@ app.put('/user/:id', upload.single('profilePicture'), async (req, res) => {
 
 
 
-app.listen(port, host, () => {
-  console.log(`Server is running on http://${host}:${port}`);
+app.listen( () => {
+  console.log('Server is running on ');
 });
