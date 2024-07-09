@@ -21,16 +21,22 @@ const userFormDataCollection = 'UserFormData';
 const menuCollectionName = 'menu';
 const secretKey = 'SPD041803';
 
-const allowedOrigins = ['http://localhost:3000'];
-const corsOptions = {
-    origin: (origin, callback) => {
-        if (allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-};
+// const allowedOrigins = ['http://localhost:3000'];
+// const corsOptions = {
+//     origin: (origin, callback) => {
+//         if (allowedOrigins.includes(origin)) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('Not allowed by CORS'));
+//         }
+//     },
+// };
+
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//       callback(null, true);
+//   },
+// };
 
 app.use(bodyParser.json());
 app.use(cors());
